@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
@@ -6,10 +7,15 @@
     <link rel="stylesheet" href="<c:url value="/res/css/1.css"/>">
 </head>
 <body>
-    <h1>${vasia}</h1>
+<h1>${vasia}</h1>
+<c:if test="${auth}">
+    Hello, ${name}
+    <form method="post" action="<c:url value="/logout"/>">
+        <button>logout</button>
+    </form>
+</c:if>
 
-    <c:forEach items="${users}" var="user">
-        <div> ${user.id} - ${user.name} ${user.pass}</div>
-    </c:forEach>
+<c:if test="${!auth}">
+    <a href="<c:url value="/login"/>">login</a>
+</c:if>
 </body>
-</html>

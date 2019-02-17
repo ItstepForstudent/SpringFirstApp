@@ -1,17 +1,22 @@
 package org.itstep.springfirst.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.sql.Timestamp;
+import javax.persistence.*;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+
+@Entity
+@Getter
+@Setter
+@Table(name = "users")
 public class User{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private String pass;
-    private Timestamp registerDate;
+
+
 }
