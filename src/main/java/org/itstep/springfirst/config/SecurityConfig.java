@@ -40,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
         http
                 .authorizeRequests()
                     .antMatchers("/").permitAll()
+                    .antMatchers("/register").permitAll()
                     .antMatchers("/res/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
@@ -47,7 +48,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                         .loginPage("/login").permitAll()
                 .and()
                     .logout()
-                        .logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                         .invalidateHttpSession(true)
         ;
@@ -58,16 +58,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Bean
     PasswordEncoder passwordEncoder(){
-        return new PasswordEncoder() {
-            @Override
-            public String encode(CharSequence charSequence) {
-                return charSequence.toString();
-            }
-
-            @Override
-            public boolean matches(CharSequence charSequence, String s) {
-                return charSequence.toString().equals(s);
-            }
-        };
+        return new BCryptPasswordEncoder();
+//        return new PasswordEncoder() {
+//            @Override
+//            public String encode(CharSequence charSequence) {
+//                return charSequence.toString();
+//            }
+//
+//            @Override
+//            public boolean matches(CharSequence charSequence, String s) {
+//                return charSequence.toString().equals(s);
+//            }
+//        };
     }
 }

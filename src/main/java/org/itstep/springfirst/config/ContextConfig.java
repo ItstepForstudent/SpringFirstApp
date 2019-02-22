@@ -48,8 +48,8 @@ public class ContextConfig extends WebMvcConfigurerAdapter {
     public DataSource dataSource(){
         HikariConfig config = new HikariConfig();
         config.setUsername("root");
-        config.setPassword("1111");
-        config.setJdbcUrl("jdbc:mysql://localhost:3306/hiber?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+        config.setPassword("");
+        config.setJdbcUrl("jdbc:mysql://localhost:3306/todo?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         config.setDriverClassName("com.mysql.cj.jdbc.Driver");
         return new HikariDataSource(config);
     }

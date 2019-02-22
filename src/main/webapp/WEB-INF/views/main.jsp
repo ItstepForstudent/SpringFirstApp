@@ -11,11 +11,14 @@
 <c:if test="${auth}">
     Hello, ${name}
     <form method="post" action="<c:url value="/logout"/>">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <button>logout</button>
     </form>
 </c:if>
 
 <c:if test="${!auth}">
+
     <a href="<c:url value="/login"/>">login</a>
+    <a href="<c:url value="/register"/>">register</a>
 </c:if>
 </body>
